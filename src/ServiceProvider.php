@@ -1,0 +1,26 @@
+<?php
+
+declare(strict_types=1);
+/**
+ * Fangx's Package.
+ *
+ * @link     https://nfangxu.com
+ * @document https://pkg.nfangxu.com
+ * @contact  nfangxu@gmail.com
+ * @license  https://pkg.nfangxu.com/license
+ */
+
+namespace Fangx\TestingMigrationCommand;
+
+class ServiceProvider extends \Illuminate\Support\ServiceProvider
+{
+    public function boot()
+    {
+        //
+    }
+
+    public function register()
+    {
+        //
+    }
+}

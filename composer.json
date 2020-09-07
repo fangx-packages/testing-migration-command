@@ -1,0 +1,56 @@
+{
+    "name": "fangx/testing-migration-command",
+    "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "php",
+        "hyperf"
+    ],
+    "description": "testing migration commands",
+    "authors": [
+        {
+            "name": "nfangxu",
+            "email": "nfangxu@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.2.0",
+        "ext-json": "*",
+        "illuminate/console": "^7.0|^8.0",
+        "illuminate/database": "^7.0|^8.0",
+        "illuminate/support": "^7.0|^8.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "*",
+        "phpstan/phpstan": "^0.12",
+        "friendsofphp/php-cs-fixer": "^2.16"
+    },
+    "autoload": {
+        "psr-4": {
+            "Fangx\\TestingMigrationCommand\\": "src/"
+        },
+        "files": []
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Fangx\\Tests\\": "tests/"
+        }
+    },
+    "bin": [],
+    "config": {
+        "sort-packages": true
+    },
+    "scripts": {
+        "cs-fix": "php-cs-fixer fix $1",
+        "test": "./vendor/bin/phpunit -c phpunit.xml --color=always",
+        "test-coverage": "php -d zend_extension=xdebug ./vendor/bin/phpunit -c phpunit.xml --color=always --coverage-html .codeCoverage"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Fangx\\TestingMigrationCommand\\ServiceProvider"
+            ],
+            "aliases": []
+        }
+    }
+}
