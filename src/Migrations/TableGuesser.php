@@ -1,5 +1,17 @@
 <?php
 
+declare(strict_types=1);
+
+/**
+ * Fangx's Packages
+ *
+ * @link     https://nfangxu.com
+ * @document https://pkg.nfangxu.com
+ * @contact  nfangxu@gmail.com
+ * @author   nfangxu
+ * @license  https://pkg.nfangxu.com/license
+ */
+
 namespace Fangx\TestingMigrationCommand\Migrations;
 
 class TableGuesser
@@ -17,7 +29,7 @@ class TableGuesser
     /**
      * Attempt to guess the table name and "creation" status of the given migration.
      *
-     * @param  string  $migration
+     * @param string $migration
      * @return array
      */
     public static function guess($migration)

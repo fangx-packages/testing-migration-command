@@ -1,5 +1,17 @@
 <?php
 
+declare(strict_types=1);
+
+/**
+ * Fangx's Packages
+ *
+ * @link     https://nfangxu.com
+ * @document https://pkg.nfangxu.com
+ * @contact  nfangxu@gmail.com
+ * @author   nfangxu
+ * @license  https://pkg.nfangxu.com/license
+ */
+
 namespace Fangx\TestingMigrationCommand\Migrations;
 
 use Illuminate\Console\Command;
@@ -73,10 +85,9 @@ class RefreshCommand extends Command
     /**
      * Run the rollback command.
      *
-     * @param  string  $database
-     * @param  string  $path
-     * @param  int  $step
-     * @return void
+     * @param string $database
+     * @param string $path
+     * @param int $step
      */
     protected function runRollback($database, $path, $step)
     {
@@ -92,9 +103,8 @@ class RefreshCommand extends Command
     /**
      * Run the reset command.
      *
-     * @param  string  $database
-     * @param  string  $path
-     * @return void
+     * @param string $database
+     * @param string $path
      */
     protected function runReset($database, $path)
     {
@@ -119,8 +129,7 @@ class RefreshCommand extends Command
     /**
      * Run the database seeder command.
      *
-     * @param  string  $database
-     * @return void
+     * @param string $database
      */
     protected function runSeeder($database)
     {

@@ -21,9 +21,10 @@
         "illuminate/support": "^7.0|^8.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "*",
+        "friendsofphp/php-cs-fixer": "^2.16",
+        "mockery/mockery": "^1.4",
         "phpstan/phpstan": "^0.12",
-        "friendsofphp/php-cs-fixer": "^2.16"
+        "phpunit/phpunit": "*"
     },
     "autoload": {
         "psr-4": {

@@ -1,8 +1,21 @@
 <?php
 
+declare(strict_types=1);
+
+/**
+ * Fangx's Packages
+ *
+ * @link     https://nfangxu.com
+ * @document https://pkg.nfangxu.com
+ * @contact  nfangxu@gmail.com
+ * @author   nfangxu
+ * @license  https://pkg.nfangxu.com/license
+ */
+
 namespace Fangx\TestingMigrationCommand\Migrations;
 
 use Illuminate\Console\ConfirmableTrait;
+use Illuminate\Database\Console\Migrations\BaseCommand;
 use Illuminate\Database\Migrations\Migrator;
 
 class MigrateCommand extends BaseCommand
@@ -38,9 +51,6 @@ class MigrateCommand extends BaseCommand
 
     /**
      * Create a new migration command instance.
-     *
-     * @param  \Illuminate\Database\Migrations\Migrator  $migrator
-     * @return void
      */
     public function __construct(Migrator $migrator)
     {
@@ -67,10 +77,10 @@ class MigrateCommand extends BaseCommand
             // we will use the path relative to the root of this installation folder
             // so that migrations may be run for any path within the applications.
             $this->migrator->setOutput($this->output)
-                    ->run($this->getMigrationPaths(), [
-                        'pretend' => $this->option('pretend'),
-                        'step' => $this->option('step'),
-                    ]);
+                ->run($this->getMigrationPaths(), [
+                    'pretend' => $this->option('pretend'),
+                    'step' => $this->option('step'),
+                ]);
 
             // Finally, if the "seed" option has been given, we will re-run the database
             // seed task to re-populate the database, which is convenient when adding
@@ -85,8 +95,6 @@ class MigrateCommand extends BaseCommand
 
     /**
      * Prepare the migration database for running.
-     *
-     * @return void
      */
     protected function prepareDatabase()
     {

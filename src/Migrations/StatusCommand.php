@@ -1,10 +1,23 @@
 <?php
 
+declare(strict_types=1);
+
+/**
+ * Fangx's Packages
+ *
+ * @link     https://nfangxu.com
+ * @document https://pkg.nfangxu.com
+ * @contact  nfangxu@gmail.com
+ * @author   nfangxu
+ * @license  https://pkg.nfangxu.com/license
+ */
+
 namespace Fangx\TestingMigrationCommand\Migrations;
 
 use Illuminate\Database\Migrations\Migrator;
 use Illuminate\Support\Collection;
 use Symfony\Component\Console\Input\InputOption;
+use Illuminate\Database\Console\Migrations\BaseCommand;
 
 class StatusCommand extends BaseCommand
 {
@@ -31,9 +44,6 @@ class StatusCommand extends BaseCommand
 
     /**
      * Create a new migration rollback command instance.
-     *
-     * @param  \Illuminate\Database\Migrations\Migrator  $migrator
-     * @return void
      */
     public function __construct(Migrator $migrator)
     {
@@ -45,7 +55,7 @@ class StatusCommand extends BaseCommand
     /**
      * Execute the console command.
      *
-     * @return int|null
+     * @return null|int
      */
     public function handle()
     {
@@ -71,20 +81,18 @@ class StatusCommand extends BaseCommand
     /**
      * Get the status for the given ran migrations.
      *
-     * @param  array  $ran
-     * @param  array  $batches
      * @return \Illuminate\Support\Collection
      */
     protected function getStatusFor(array $ran, array $batches)
     {
         return Collection::make($this->getAllMigrationFiles())
-                    ->map(function ($migration) use ($ran, $batches) {
-                        $migrationName = $this->migrator->getMigrationName($migration);
+            ->map(function ($migration) use ($ran, $batches) {
+                $migrationName = $this->migrator->getMigrationName($migration);
 
-                        return in_array($migrationName, $ran)
+                return in_array($migrationName, $ran)
                                 ? ['<info>Yes</info>', $migrationName, $batches[$migrationName]]
                                 : ['<fg=red>No</fg=red>', $migrationName];
-                    });
+            });
     }
 
     /**

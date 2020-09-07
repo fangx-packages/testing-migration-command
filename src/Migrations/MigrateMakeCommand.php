@@ -1,10 +1,23 @@
 <?php
 
+declare(strict_types=1);
+
+/**
+ * Fangx's Packages
+ *
+ * @link     https://nfangxu.com
+ * @document https://pkg.nfangxu.com
+ * @contact  nfangxu@gmail.com
+ * @author   nfangxu
+ * @license  https://pkg.nfangxu.com/license
+ */
+
 namespace Fangx\TestingMigrationCommand\Migrations;
 
 use Illuminate\Database\Migrations\MigrationCreator;
 use Illuminate\Support\Composer;
 use Illuminate\Support\Str;
+use Illuminate\Database\Console\Migrations\BaseCommand;
 
 class MigrateMakeCommand extends BaseCommand
 {
@@ -43,10 +56,6 @@ class MigrateMakeCommand extends BaseCommand
 
     /**
      * Create a new migration install command instance.
-     *
-     * @param  \Illuminate\Database\Migrations\MigrationCreator  $creator
-     * @param  \Illuminate\Support\Composer  $composer
-     * @return void
      */
     public function __construct(MigrationCreator $creator, Composer $composer)
     {
@@ -58,8 +67,6 @@ class MigrateMakeCommand extends BaseCommand
 
     /**
      * Execute the console command.
-     *
-     * @return void
      */
     public function handle()
     {
@@ -99,15 +106,18 @@ class MigrateMakeCommand extends BaseCommand
     /**
      * Write the migration file to disk.
      *
-     * @param  string  $name
-     * @param  string  $table
-     * @param  bool  $create
+     * @param string $name
+     * @param string $table
+     * @param bool $create
      * @return string
      */
     protected function writeMigration($name, $table, $create)
     {
         $file = $this->creator->create(
-            $name, $this->getMigrationPath(), $table, $create
+            $name,
+            $this->getMigrationPath(),
+            $table,
+            $create
         );
 
         if (! $this->option('fullpath')) {
@@ -126,7 +136,7 @@ class MigrateMakeCommand extends BaseCommand
     {
         if (! is_null($targetPath = $this->input->getOption('path'))) {
             return ! $this->usingRealPath()
-                            ? $this->laravel->basePath().'/'.$targetPath
+                            ? $this->laravel->basePath() . '/' . $targetPath
                             : $targetPath;
         }
 

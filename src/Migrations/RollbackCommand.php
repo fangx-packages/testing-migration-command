@@ -1,10 +1,23 @@
 <?php
 
+declare(strict_types=1);
+
+/**
+ * Fangx's Packages
+ *
+ * @link     https://nfangxu.com
+ * @document https://pkg.nfangxu.com
+ * @contact  nfangxu@gmail.com
+ * @author   nfangxu
+ * @license  https://pkg.nfangxu.com/license
+ */
+
 namespace Fangx\TestingMigrationCommand\Migrations;
 
 use Illuminate\Console\ConfirmableTrait;
 use Illuminate\Database\Migrations\Migrator;
 use Symfony\Component\Console\Input\InputOption;
+use Illuminate\Database\Console\Migrations\BaseCommand;
 
 class RollbackCommand extends BaseCommand
 {
@@ -33,9 +46,6 @@ class RollbackCommand extends BaseCommand
 
     /**
      * Create a new migration rollback command instance.
-     *
-     * @param  \Illuminate\Database\Migrations\Migrator  $migrator
-     * @return void
      */
     public function __construct(Migrator $migrator)
     {
@@ -57,9 +67,10 @@ class RollbackCommand extends BaseCommand
 
         $this->migrator->usingConnection($this->option('database'), function () {
             $this->migrator->setOutput($this->output)->rollback(
-                $this->getMigrationPaths(), [
+                $this->getMigrationPaths(),
+                [
                     'pretend' => $this->option('pretend'),
-                    'step' => (int) $this->option('step'),
+                    'step' => (int)$this->option('step'),
                 ]
             );
         });

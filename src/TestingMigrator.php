@@ -1,5 +1,16 @@
 <?php
+
 declare(strict_types=1);
+
+/**
+ * Fangx's Packages
+ *
+ * @link     https://nfangxu.com
+ * @document https://pkg.nfangxu.com
+ * @contact  nfangxu@gmail.com
+ * @author   nfangxu
+ * @license  https://pkg.nfangxu.com/license
+ */
 
 namespace Fangx\TestingMigrationCommand;
 
@@ -25,10 +36,10 @@ class TestingMigrator extends IlluminateMigrator
     {
         $iterator = Finder::create()
             ->files()
-            ->ignoreDotFiles(!$hidden)
+            ->ignoreDotFiles(! $hidden)
             ->in($directory)
             ->sortByName()
-            ->name("*.php");
+            ->name('*.php');
 
         $files = [];
         foreach ($iterator as $key => $value) {

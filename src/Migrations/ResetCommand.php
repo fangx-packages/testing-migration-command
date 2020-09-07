@@ -1,10 +1,23 @@
 <?php
 
+declare(strict_types=1);
+
+/**
+ * Fangx's Packages
+ *
+ * @link     https://nfangxu.com
+ * @document https://pkg.nfangxu.com
+ * @contact  nfangxu@gmail.com
+ * @author   nfangxu
+ * @license  https://pkg.nfangxu.com/license
+ */
+
 namespace Fangx\TestingMigrationCommand\Migrations;
 
 use Illuminate\Console\ConfirmableTrait;
 use Illuminate\Database\Migrations\Migrator;
 use Symfony\Component\Console\Input\InputOption;
+use Illuminate\Database\Console\Migrations\BaseCommand;
 
 class ResetCommand extends BaseCommand
 {
@@ -33,9 +46,6 @@ class ResetCommand extends BaseCommand
 
     /**
      * Create a new migration rollback command instance.
-     *
-     * @param  \Illuminate\Database\Migrations\Migrator  $migrator
-     * @return void
      */
     public function __construct(Migrator $migrator)
     {
@@ -64,7 +74,8 @@ class ResetCommand extends BaseCommand
             }
 
             $this->migrator->setOutput($this->output)->reset(
-                $this->getMigrationPaths(), $this->option('pretend')
+                $this->getMigrationPaths(),
+                $this->option('pretend')
             );
         });
 
