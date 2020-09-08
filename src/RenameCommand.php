@@ -26,13 +26,4 @@ trait RenameCommand
 
         return parent::call($command, $arguments);
     }
-
-    public function artisan($command, $parameters = [])
-    {
-        if (Str::startsWith($command, ['migrate', 'migration'])) {
-            $command = 'testing-' . $command;
-        }
-
-        return parent::artisan($command, $parameters);
-    }
 }
