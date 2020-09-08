@@ -21,17 +21,7 @@ class TestingRefreshCommand extends IlluminateRefreshCommand
 {
     use RenameCommand;
 
-    /**
-     * The console command name.
-     *
-     * @var string
-     */
     protected $name = 'testing-migrate:refresh';
 
-    /**
-     * The console command description.
-     *
-     * @var string
-     */
     protected $description = 'Reset and re-run all migrations';
 }

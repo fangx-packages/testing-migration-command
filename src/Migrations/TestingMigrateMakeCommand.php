@@ -14,15 +14,12 @@ declare(strict_types=1);
 
 namespace Fangx\TestingMigrationCommand\Migrations;
 
+use Fangx\TestingMigrationCommand\T;
 use Illuminate\Database\Console\Migrations\MigrateMakeCommand as IlluminateMigrateMakeCommand;
+use Illuminate\Support\Composer;
 
 class TestingMigrateMakeCommand extends IlluminateMigrateMakeCommand
 {
-    /**
-     * The console command signature.
-     *
-     * @var string
-     */
     protected $signature = 'testing-make:migration {name : The name of the migration}
         {--create= : The table to be created}
         {--table= : The table to migrate}
@@ -30,10 +27,10 @@ class TestingMigrateMakeCommand extends IlluminateMigrateMakeCommand
         {--realpath : Indicate any provided migration file paths are pre-resolved absolute paths}
         {--fullpath : Output the full path of the migration}';
 
-    /**
-     * The console command description.
-     *
-     * @var string
-     */
-    protected $description = 'Create a new testing migration file';
+    protected $description = 'Create a new migration file';
+
+    public function __construct(Composer $composer)
+    {
+        parent::__construct(T::migrationCreator(), $composer);
+    }
 }

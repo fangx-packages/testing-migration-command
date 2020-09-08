@@ -14,30 +14,17 @@ declare(strict_types=1);
 
 namespace Fangx\TestingMigrationCommand\Migrations;
 
-use Fangx\TestingMigrationCommand\TestingMigrator;
+use Fangx\TestingMigrationCommand\T;
 use Illuminate\Database\Console\Migrations\ResetCommand as IlluminateResetCommand;
 
 class TestingResetCommand extends IlluminateResetCommand
 {
-    /**
-     * The console command name.
-     *
-     * @var string
-     */
     protected $name = 'testing-migrate:reset';
 
-    /**
-     * The console command description.
-     *
-     * @var string
-     */
     protected $description = 'Rollback all database migrations';
 
-    /**
-     * Create a new migration rollback command instance.
-     */
     public function __construct()
     {
-        parent::__construct(TestingMigrator::getInstance());
+        parent::__construct(T::migrator());
     }
 }

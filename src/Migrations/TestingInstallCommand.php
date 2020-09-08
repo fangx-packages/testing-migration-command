@@ -14,11 +14,17 @@ declare(strict_types=1);
 
 namespace Fangx\TestingMigrationCommand\Migrations;
 
+use Fangx\TestingMigrationCommand\T;
 use Illuminate\Database\Console\Migrations\InstallCommand as IlluminateInstallCommand;
 
 class TestingInstallCommand extends IlluminateInstallCommand
 {
     protected $name = 'testing-migrate:install';
 
-    protected $description = 'Create the testing migration repository';
+    protected $description = 'Create the migration repository';
+
+    public function __construct()
+    {
+        parent::__construct(T::migrationRepository());
+    }
 }

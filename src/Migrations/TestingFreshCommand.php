@@ -15,13 +15,13 @@ declare(strict_types=1);
 namespace Fangx\TestingMigrationCommand\Migrations;
 
 use Fangx\TestingMigrationCommand\RenameCommand;
-use Illuminate\Database\Console\Migrations\FreshCommand;
+use Illuminate\Database\Console\Migrations\FreshCommand as IlluminateFreshCommand;
 
-class TestingFreshCommand extends FreshCommand
+class TestingFreshCommand extends IlluminateFreshCommand
 {
     use RenameCommand;
 
     protected $name = 'testing-migrate:fresh';
 
-    protected $description = 'Drop all tables and re-run all testing migrations';
+    protected $description = 'Drop all tables and re-run all migrations';
 }

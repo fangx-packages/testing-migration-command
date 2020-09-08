@@ -14,16 +14,11 @@ declare(strict_types=1);
 
 namespace Fangx\TestingMigrationCommand\Migrations;
 
-use Fangx\TestingMigrationCommand\TestingMigrator;
+use Fangx\TestingMigrationCommand\T;
 use Illuminate\Database\Console\Migrations\MigrateCommand as IlluminateMigrateCommand;
 
 class TestingMigrateCommand extends IlluminateMigrateCommand
 {
-    /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
     protected $signature = 'testing-migrate {--database= : The database connection to use}
                 {--force : Force the operation to run when in production}
                 {--path=* : The path(s) to the migrations files to be executed}
@@ -32,15 +27,10 @@ class TestingMigrateCommand extends IlluminateMigrateCommand
                 {--seed : Indicates if the seed task should be re-run}
                 {--step : Force the migrations to be run so they can be rolled back individually}';
 
-    /**
-     * The console command description.
-     *
-     * @var string
-     */
     protected $description = 'Run the database migrations';
 
     public function __construct()
     {
-        parent::__construct(TestingMigrator::getInstance());
+        parent::__construct(T::migrator());
     }
 }
