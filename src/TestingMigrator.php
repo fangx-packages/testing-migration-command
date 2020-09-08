@@ -14,6 +14,7 @@ declare(strict_types=1);
 
 namespace Fangx\TestingMigrationCommand;
 
+use Illuminate\Container\Container;
 use Illuminate\Database\Migrations\Migrator as IlluminateMigrator;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
@@ -30,6 +31,18 @@ class TestingMigrator extends IlluminateMigrator
         })->sortBy(function ($file, $key) {
             return $key;
         })->all();
+    }
+
+    public static function getInstance()
+    {
+        $app = Container::getInstance();
+
+        return new static(
+            $app->make('migration.repository'),
+            $app->make('db'),
+            $app->make('files'),
+            $app->make('events')
+        );
     }
 
     private function getFiles($directory, $hidden = false)

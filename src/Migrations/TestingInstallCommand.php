@@ -16,7 +16,7 @@ namespace Fangx\TestingMigrationCommand\Migrations;
 
 use Illuminate\Database\Console\Migrations\InstallCommand as IlluminateInstallCommand;
 
-class InstallCommand extends IlluminateInstallCommand
+class TestingInstallCommand extends IlluminateInstallCommand
 {
     protected $name = 'testing-migrate:install';
 

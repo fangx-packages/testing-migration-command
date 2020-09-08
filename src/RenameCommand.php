@@ -18,12 +18,21 @@ use Illuminate\Support\Str;
 
 trait RenameCommand
 {
-    public function call($command, array $arguments = [])
+    public function call($command, ...$args)
     {
         if (Str::startsWith($command, ['migrate', 'migration'])) {
             $command = 'testing-' . $command;
         }
 
-        return parent::call($command, $arguments);
+        return parent::call($command, ...$args);
+    }
+
+    public function artisan($command, ...$args)
+    {
+        if (Str::startsWith($command, ['migrate', 'migration'])) {
+            $command = 'testing-' . $command;
+        }
+
+        return parent::artisan($command, ...$args);
     }
 }
